@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Velaro — Wear Confidence. Wear Velaro.</title>
+<meta name="description" content="Velaro — Premium fashion crafted for modern men who value style, class, and presence. Luxury suits delivered across Pakistan & worldwide." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0f0f0f;
+    --charcoal:#1e1e1e;
+    --gold:#c8a96b;
+    --gold-soft:#d8bd84;
+    --ivory:#f8f5ef;
+    --beige:#ece4d3;
+    --muted:#8a8273;
+    --shadow: 0 20px 60px rgba(0,0,0,.18);
+    --radius: 14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--ivory);
+    color:var(--charcoal);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.5px;color:var(--black)}
+  a{text-decoration:none;color:inherit}
+  img{max-width:100%;display:block}
+  .container{max-width:1240px;margin:0 auto;padding:0 28px}
+
+  /* NAV */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(15,15,15,.85);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(200,169,107,.15);
+    transition:all .3s ease;
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1240px;margin:0 auto}
+  .logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:30px;font-weight:700;letter-spacing:6px;
+    color:var(--ivory);
+  }
+  .logo span{color:var(--gold)}
+  .nav-menu{display:flex;gap:38px;list-style:none}
+  .nav-menu a{
+    color:var(--ivory);
+    font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+    position:relative;padding:6px 0;transition:color .3s;
+  }
+  .nav-menu a::after{
+    content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+    background:linear-gradient(90deg,var(--gold),var(--gold-soft));
+    transition:width .35s ease;
+  }
+  .nav-menu a:hover{color:var(--gold)}
+  .nav-menu a:hover::after{width:100%}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0}
+  .burger span{display:block;width:26px;height:2px;background:var(--ivory)}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    background:
+      linear-gradient(135deg, rgba(15,15,15,.78) 0%, rgba(30,30,30,.55) 60%, rgba(15,15,15,.85) 100%),
+      url('https://images.unsplash.com/photo-1617137968427-85924c800a22?w=1800&q=80') center/cover no-repeat;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;color:var(--ivory);
+    position:relative;padding:120px 24px 80px;
+  }
+  .hero::before{
+    content:"LIMITED COLLECTION 2026";
+    position:absolute;top:110px;left:50%;transform:translateX(-50%);
+    font-size:11px;letter-spacing:6px;color:var(--gold);
+    border:1px solid var(--gold);padding:8px 20px;border-radius:100px;
+  }
+  .hero-content{max-width:920px;animation:fadeUp 1.2s ease}
+  .hero h1{
+    font-size:clamp(40px, 6.5vw, 86px);
+    line-height:1.05;color:var(--ivory);
+    font-weight:500;margin-bottom:22px;
+  }
+  .hero h1 em{font-style:italic;color:var(--gold);font-weight:600}
+  .hero p{
+    font-size:clamp(15px,1.4vw,18px);
+    color:rgba(248,245,239,.78);
+    max-width:640px;margin:0 auto 38px;font-weight:300;
+  }
+  .cta-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    display:inline-block;padding:16px 38px;
+    font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
+    border-radius:2px;cursor:pointer;border:none;transition:all .35s ease;
+  }
+  .btn-gold{
+    background:linear-gradient(135deg,var(--gold) 0%,var(--gold-soft) 100%);
+    color:var(--black);
+    box-shadow:0 10px 30px rgba(200,169,107,.35);
+  }
+  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(200,169,107,.55)}
+  .btn-ghost{
+    background:transparent;color:var(--ivory);border:1px solid rgba(248,245,239,.5);
+  }
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .trust-bar{
+    margin-top:60px;display:flex;gap:40px;justify-content:center;flex-wrap:wrap;
+    font-size:11px;letter-spacing:3px;color:rgba(248,245,239,.55);text-transform:uppercase;
+  }
+  .trust-bar span::before{content:"★ ";color:var(--gold)}
+
+  /* SECTION HEADERS */
+  section{padding:110px 0}
+  .section-head{text-align:center;max-width:680px;margin:0 auto 70px}
+  .eyebrow{
+    display:inline-block;font-size:11px;letter-spacing:5px;color:var(--gold);
+    text-transform:uppercase;margin-bottom:16px;font-weight:600;
+  }
+  .section-head h2{font-size:clamp(32px,4vw,52px);line-height:1.1;margin-bottom:18px}
+  .section-head p{color:var(--muted);font-size:16px}
+
+  /* COLLECTION GRID */
+  .collection{background:var(--ivory)}
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:34px;
+  }
+  .card{
+    background:#fff;border-radius:var(--radius);overflow:hidden;
+    box-shadow:0 8px 30px rgba(15,15,15,.06);
+    transition:all .5s cubic-bezier(.2,.8,.2,1);
+    display:flex;flex-direction:column;position:relative;
+  }
+  .card:hover{transform:translateY(-10px);box-shadow:var(--shadow)}
+  .card-img{
+    aspect-ratio:3/4;overflow:hidden;background:var(--beige);position:relative;
+  }
+  .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+  .card:hover .card-img img{transform:scale(1.07)}
+  .badge{
+    position:absolute;top:14px;left:14px;background:var(--black);color:var(--gold);
+    font-size:10px;letter-spacing:2px;padding:5px 10px;text-transform:uppercase;
+  }
+  .card-body{padding:22px 22px 26px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .card-body h3{font-size:22px;color:var(--black)}
+  .card-body .desc{font-size:13px;color:var(--muted);min-height:38px}
+  .price-row{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+  .price{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--black);font-weight:600}
+  .price small{color:var(--muted);text-decoration:line-through;font-size:13px;margin-left:8px;font-family:'Inter';font-weight:400}
+  .buy{
+    background:var(--black);color:var(--ivory);
+    padding:10px 18px;font-size:11px;letter-spacing:2px;text-transform:uppercase;
+    border-radius:2px;border:none;cursor:pointer;transition:all .3s;
+  }
+  .buy:hover{background:var(--gold);color:var(--black)}
+
+  /* WHY CHOOSE */
+  .why{background:var(--black);color:var(--ivory)}
+  .why h2{color:var(--ivory)}
+  .why .section-head p{color:rgba(248,245,239,.6)}
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+  .why-card{
+    padding:50px 32px;text-align:center;
+    background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+    border:1px solid rgba(200,169,107,.2);
+    border-radius:var(--radius);transition:all .4s;
+  }
+  .why-card:hover{border-color:var(--gold);transform:translateY(-6px);background:linear-gradient(180deg, rgba(200,169,107,.08), transparent)}
+  .why-icon{
+    width:72px;height:72px;margin:0 auto 22px;border-radius:50%;
+    background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+    display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--black);
+  }
+  .why-card h3{color:var(--ivory);font-size:24px;margin-bottom:12px}
+  .why-card p{color:rgba(248,245,239,.6);font-size:14px}
+
+  /* REVIEWS */
+  .reviews{background:var(--beige)}
+  .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+  .review{
+    background:var(--ivory);padding:38px 32px;border-radius:var(--radius);
+    box-shadow:0 10px 30px rgba(15,15,15,.06);position:relative;
+    border-top:3px solid var(--gold);
+  }
+  .stars{color:var(--gold);letter-spacing:3px;font-size:16px;margin-bottom:14px}
+  .review p{font-style:italic;color:var(--charcoal);margin-bottom:22px;font-size:15px}
+  .reviewer{display:flex;align-items:center;gap:14px}
+  .avatar{
+    width:48px;height:48px;border-radius:50%;
+    background:linear-gradient(135deg,var(--gold),var(--charcoal));
+    display:flex;align-items:center;justify-content:center;color:var(--ivory);font-weight:600;
+  }
+  .reviewer .name{font-weight:600;color:var(--black);font-size:15px}
+  .reviewer .role{font-size:12px;color:var(--muted);letter-spacing:1px}
+
+  /* ABOUT */
+  .about{background:var(--ivory)}
+  .about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+  .about-img{
+    aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;
+    background:url('https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=900&q=80') center/cover;
+    box-shadow:var(--shadow);position:relative;
+  }
+  .about-img::after{
+    content:"EST. 2024";position:absolute;bottom:24px;left:24px;
+    background:var(--gold);color:var(--black);padding:8px 16px;
+    font-size:11px;letter-spacing:3px;font-weight:600;
+  }
+  .about-text h2{font-size:48px;line-height:1.1;margin-bottom:22px}
+  .about-text .lead{font-size:17px;color:var(--charcoal);margin-bottom:18px}
+  .about-text p{color:var(--muted);margin-bottom:18px}
+  .about-stats{display:flex;gap:40px;margin-top:30px;flex-wrap:wrap}
+  .stat .num{font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--gold);font-weight:600}
+  .stat .lbl{font-size:11px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+
+  /* CONTACT */
+  .contact{background:var(--charcoal);color:var(--ivory)}
+  .contact h2{color:var(--ivory)}
+  .contact .section-head p{color:rgba(248,245,239,.6)}
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;max-width:980px;margin:0 auto}
+  .contact-card{
+    background:rgba(255,255,255,.04);border:1px solid rgba(200,169,107,.15);
+    padding:38px 24px;text-align:center;border-radius:var(--radius);transition:all .35s;
+  }
+  .contact-card:hover{border-color:var(--gold);transform:translateY(-5px)}
+  .contact-card .ico{font-size:28px;color:var(--gold);margin-bottom:14px}
+  .contact-card h4{color:var(--ivory);font-family:'Inter';font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+  .contact-card a{color:rgba(248,245,239,.7);font-size:14px;transition:color .3s}
+  .contact-card a:hover{color:var(--gold)}
+  .wa-btn{
+    display:inline-block;margin-top:50px;background:#25d366;color:#fff;
+    padding:18px 42px;border-radius:60px;font-weight:600;letter-spacing:2px;font-size:13px;
+    text-transform:uppercase;transition:all .35s;box-shadow:0 10px 30px rgba(37,211,102,.3);
+  }
+  .wa-btn:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(37,211,102,.5)}
+  .contact .center{text-align:center}
+
+  /* FOOTER */
+  footer{background:var(--black);color:rgba(248,245,239,.55);padding:70px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;margin-bottom:50px}
+  .foot-grid h5{color:var(--ivory);font-family:'Inter';font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px}
+  .foot-grid ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .foot-grid a{font-size:14px;transition:color .3s}
+  .foot-grid a:hover{color:var(--gold)}
+  .foot-about p{font-size:14px;max-width:320px;margin-top:14px;line-height:1.7}
+  .socials{display:flex;gap:12px;margin-top:18px}
+  .socials a{
+    width:38px;height:38px;border-radius:50%;border:1px solid rgba(200,169,107,.3);
+    display:flex;align-items:center;justify-content:center;color:var(--gold);transition:all .3s;
+  }
+  .socials a:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
+  .copy{
+    border-top:1px solid rgba(255,255,255,.06);padding-top:24px;
+    text-align:center;font-size:12px;letter-spacing:2px;color:rgba(248,245,239,.4);
+  }
+  .copy span{color:var(--gold)}
+
+  /* ANIMATIONS */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+  .reveal{opacity:0;transform:translateY(40px);transition:all .9s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* MOBILE */
+  @media(max-width:880px){
+    .nav-menu{
+      position:fixed;top:0;right:-100%;height:100vh;width:75%;
+      background:var(--black);flex-direction:column;justify-content:center;align-items:center;
+      gap:30px;transition:right .4s ease;
+    }
+    .nav-menu.open{right:0}
+    .burger{display:flex;z-index:101}
+    .about-wrap{grid-template-columns:1fr;gap:40px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+    section{padding:80px 0}
+    .hero::before{top:90px}
+  }
+  @media(max-width:520px){
+    .foot-grid{grid-template-columns:1fr}
+    .trust-bar{gap:18px;font-size:10px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="logo">VELA<span>RO</span></a>
+    <nav>
+      <ul class="nav-menu" id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="#new">New Arrivals</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Wear Confidence.<br/>Wear <em>Velaro</em>.</h1>
+    <p>Premium fashion crafted for modern men who value style, class, and presence. Tailored elegance that speaks before you do.</p>
+    <div class="cta-row">
+      <a href="#collection" class="btn btn-gold">Shop Now</a>
+      <a href="#new" class="btn btn-ghost">Explore Collection</a>
+    </div>
+    <div class="trust-bar">
+      <span>Trusted by 5,000+ Customers</span>
+      <span>Worldwide Shipping</span>
+      <span>Premium Fabric</span>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="collection" id="collection">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Featured Collection</span>
+      <h2>The Velaro Signature Line</h2>
+      <p>Handpicked silhouettes designed for the modern gentleman. Limited stock — once gone, gone forever.</p>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="new">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Choose Velaro</span>
+      <h2>Crafted for Excellence</h2>
+      <p>Every detail engineered with intention — from fabric to fit to finish.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">✦</div>
+        <h3>Premium Fabric Quality</h3>
+        <p>Sourced from the finest mills, our fabrics breathe luxury in every thread.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">✂</div>
+        <h3>Tailored Modern Fit</h3>
+        <p>Precision cuts that flatter, contour, and command presence in any room.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">⚡</div>
+        <h3>Fast & Reliable Delivery</h3>
+        <p>Express shipping across Pakistan and worldwide — packaged with care.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Customer Stories</span>
+      <h2>Loved by Gentlemen Worldwide</h2>
+      <p>Join thousands who trust Velaro for the moments that matter.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>"The fit, the fabric, the finish — flawless. I wore my Velaro suit to a wedding and got asked about it all night."</p>
+        <div class="reviewer">
+          <div class="avatar">AH</div>
+          <div><div class="name">Ahmed Hassan</div><div class="role">Karachi, PK</div></div>
+        </div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Pure luxury. Velaro isn't just clothing — it's a statement. Worth every rupee and then some."</p>
+        <div class="reviewer">
+          <div class="avatar">BK</div>
+          <div><div class="name">Bilal Khan</div><div class="role">Lahore, PK</div></div>
+        </div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Shipped to Dubai in 4 days. Packaging felt like opening a gift from a top European house. Stunning."</p>
+        <div class="reviewer">
+          <div class="avatar">OR</div>
+          <div><div class="name">Omar Raza</div><div class="role">Dubai, UAE</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-wrap">
+      <div class="about-img reveal"></div>
+      <div class="about-text reveal">
+        <span class="eyebrow">Our Story</span>
+        <h2>The House of Velaro</h2>
+        <p class="lead">Velaro represents modern elegance, confidence, and timeless fashion for men who dress with purpose.</p>
+        <p>Born from a passion for craftsmanship and a respect for tradition, every Velaro piece is designed to outlast trends and outshine expectations. We believe great clothing isn't worn — it's inhabited.</p>
+        <div class="about-stats">
+          <div class="stat"><div class="num">5K+</div><div class="lbl">Happy Clients</div></div>
+          <div class="stat"><div class="num">25+</div><div class="lbl">Countries</div></div>
+          <div class="stat"><div class="num">100%</div><div class="lbl">Premium Fabric</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Get In Touch</span>
+      <h2>Let's Connect</h2>
+      <p>Questions, custom orders, or styling advice — we're here for you.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="ico">✉</div><h4>Email</h4>
+        <a href="mailto:hello@velaro.pk">hello@velaro.pk</a>
+      </div>
+      <div class="contact-card reveal">
+        <div class="ico">◉</div><h4>Instagram</h4>
+        <a href="https://instagram.com/velaro" target="_blank">@velaro</a>
+      </div>
+      <div class="contact-card reveal">
+        <div class="ico">⌖</div><h4>Location</h4>
+        <a>Pakistan & Worldwide</a>
+      </div>
+      <div class="contact-card reveal">
+        <div class="ico">☏</div><h4>WhatsApp</h4>
+        <a href="https://wa.me/923000000000" target="_blank">+92 300 0000000</a>
+      </div>
+    </div>
+    <div class="center">
+      <a class="wa-btn" href="https://wa.me/923000000000" target="_blank">Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <div class="logo" style="font-size:26px">VELA<span style="color:var(--gold)">RO</span></div>
+        <p>Premium menswear crafted for those who lead with style. Designed in Pakistan, worn worldwide.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">Fb</a>
+          <a href="#" aria-label="Twitter">X</a>
+          <a href="#" aria-label="TikTok">Tk</a>
+        </div>
+      </div>
+      <div>
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#new">New Arrivals</a></li>
+          <li><a href="#">Bestsellers</a></li>
+          <li><a href="#">Sale</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 <span>VELARO</span> — All Rights Reserved. Crafted with elegance.</div>
+  </div>
+</footer>
+
+<script>
+  // Product data
+  const products = [
+    {n:"Onyx Classic Suit", d:"Tailored two-piece in midnight wool blend.", p:"24,900", o:"32,000", img:"soot1.jpg", b:"Bestseller"},
+    {n:"Royal Charcoal", d:"Sharp single-breasted statement piece.", p:"26,500", o:"34,000", img:"soot2.jpg", b:"New"},
+    {n:"Velaro Noir", d:"Pure black tuxedo with satin lapel.", p:"32,000", o:"40,000", img:"soot3.jpg", b:"Limited"},
+    {n:"Heritage Beige", d:"Soft-structured warm-toned suit.", p:"23,800", o:null, img:"soot4.jpg", b:null},
+    {n:"Midnight Navy", d:"Refined navy with modern silhouette.", p:"25,500", o:"31,000", img:"soot5.jpg", b:"Hot"},
+    {n:"Stone Grey Fit", d:"Versatile grey for power moments.", p:"24,200", o:null, img:"soot6.jpg", b:null},
+    {n:"Imperial Black", d:"Slim-cut with peak lapel finish.", p:"27,900", o:"35,000", img:"soot7.jpg", b:"Top Pick"},
+    {n:"Velaro Espresso", d:"Rich brown for refined evenings.", p:"26,800", o:null, img:"soot8.jpg", b:"New"},
+    {n:"Pearl Ivory Suit", d:"Wedding-ready statement of grace.", p:"34,500", o:"42,000", img:"soot9.jpg", b:"Wedding"},
+    {n:"Obsidian Tuxedo", d:"The crown jewel of formal wear.", p:"38,000", o:"48,000", img:"soot10.jpg", b:"Premium"},
+  ];
+
+  const grid = document.getElementById('grid');
+  grid.innerHTML = products.map(p => `
+    <div class="card reveal">
+      <div class="card-img">
+        ${p.b ? `<span class="badge">${p.b}</span>` : ''}
+        <img src="${p.img}" alt="${p.n}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80'"/>
+      </div>
+      <div class="card-body">
+        <h3>${p.n}</h3>
+        <p class="desc">${p.d}</p>
+        <div class="price-row">
+          <div class="price">PKR ${p.p}${p.o ? `<small>${p.o}</small>` : ''}</div>
+          <button class="buy" onclick="window.open('https://wa.me/923000000000?text=I want to order ${encodeURIComponent(p.n)}','_blank')">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
